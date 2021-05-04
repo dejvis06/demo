@@ -1,0 +1,49 @@
+.header{
+    /* display: flex;
+    justify-content: flex-end; */
+    margin-left: auto;
+    width: 15%;
+    padding-top: 25px;
+}
+.container{
+    max-width: 1700px;
+}
+
+.title{
+    padding: 0;
+    margin: 0px 0px 0px -80px;
+    
+}
+
+.adress{
+    margin: 0 -69px;
+}
+.website{
+    margin: 0px 68px;
+}
+.notification{
+    text-align: center;
+    text-decoration: underline;
+    padding-bottom: 25px;
+}
+
+.description{
+    /* white-space: pre-line; */
+    text-align: center;
+}
+td{
+    border: 1px solid #000;
+
+}
+.table-name{
+    color: #D2002E;
+    background: #FFCC01;
+    font-weight: 900;
+}
+table{
+    margin: auto;
+    padding: 50px;
+}
+.footer{
+    margin-left: 25%;
+}
