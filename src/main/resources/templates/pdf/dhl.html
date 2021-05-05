@@ -3,57 +3,85 @@
 <head>
 <style>
 .header {
-	/* display: flex;
-    justify-content: flex-end; 
+	display: flex;
+	justify-content: flex-end;
 	margin-left: auto;
 	width: 15%;
-	padding-top: 25px; */
+	padding-top: 25px;
 }
 
 .container {
 	/*max-width: 1700px;*/
-	width:649px;
+	width: 649px;
 }
 
 .title {
-	padding: 0;
-	margin: 0px 0px 0px -80px;
+	margin-left: auto;
+	font-size: 10px;
+	white-space: nowrap;
 }
 
 .adress {
-	margin: 0 -69px;
+	margin-top: -10px;
+	margin-left: auto;
+	font-size: 10px;
+	font-style: italic;
+	white-space: nowrap;
 }
 
-
+.website {
+	margin-top: -10px;
+	margin-left: auto;
+	font-size: 10px;
+	font-style: italic;
+	white-space: nowrap;
+	margin-left: auto;
+	margin-top: -10px;
+}
 
 .notification {
 	text-align: center;
 	text-decoration: underline;
 	padding-bottom: 25px;
+	font: bold 21px
 }
 
 .description {
 	/* white-space: pre-line; */
-	text-align: center;
+	text-align: left;
+	font-size: 12px;
 }
 
 td {
 	border: 1px solid #000;
+	padding: 0px;
+	white-space: nowrap;
 }
 
-.table-name {
+.td {
+	padding-left: 5px;
+	padding-right: 5px;
 	color: #D2002E;
 	background: #FFCC01;
-	font-weight: 900;
+	font-weight: 0;
+}
+
+.td-value {
+	padding-left: 5px;
+	padding-right: 5px;
+	font-family: Arial, Helvetica, sans-serif;
 }
 
 table {
-	margin: auto;
+	margin: 50px auto 50px auto;
 	padding: 50px;
+	border-collapse: collapse;
+	border-spacing: 0;
 }
 
 .footer {
-	margin-left: 25%;
+	text-align: left;
+	font-size: 12px;
 }
 </style>
 </head>
@@ -68,34 +96,37 @@ table {
 			<p class="website">www.dhl.al</p>
 		</div>
 		<h2 class="notification">NJOFTIM</h2>
-		<p class="description">
-			Ju lutem gjeni bashkangjitur detajet e llogarise bankare ku mund te
-			kryeni pagesen e detyrimit doganor dhe agjensise doganore.<br>
-			Informacioni mbi kodin IBAN eshte i detyrueshem nga te gjitha bankat
-			per kryerjen e cdo transaksioni bankar qe nga data 01/02/2018.</br>
-		</p>
+		<p class="description">Ju lutem gjeni bashkangjitur detajet e
+			llogarise bankare ku mund te kryeni pagesen e detyrimit doganor dhe
+			agjensise doganore. Informacioni mbi kodin IBAN eshte i detyrueshem
+			nga te gjitha bankat per kryerjen e cdo transaksioni bankar qe nga
+			data 01/02/2018.</p>
 		<table>
 			<tbody>
 				<tr>
-					<td class="table-name">Emri i llogarise</td>
-					<td>DHL International (Albania) SHPK</td>
+					<td class="td">Banka</td>
+					<td class="td-value"><span th:text=${bank} /></td>
 				</tr>
 				<tr>
-					<td class="table-name">Numri i llogarise</td>
-					<td>20019735304</td>
+					<td class="td">Emri i llogarise</td>
+					<td class="td-value"><span th:text=${accountName} /></td>
 				</tr>
 				<tr>
-					<td class="table-name">IBAN</td>
-					<td>AL25208110080000020019735304</td>
+					<td class="td">Numri i llogarise</td>
+					<td class="td-value"><span th:text=${accountNo} /></td>
 				</tr>
 				<tr>
-					<td class="table-name">Monedha</td>
-					<td>ALL</td>
+					<td class="td">IBAN</td>
+					<td class="td-value"><span th:text=${iban} /></td>
+				</tr>
+				<tr>
+					<td class="td">Monedha</td>
+					<td class="td-value"><span th:text=${currency} /></td>
 				</tr>
 			</tbody>
 		</table>
 		<div class="footer">
-			<p>Ju Faleminderit</p>
+			<p>Ju faleminderit!</p>
 			<h3>Departamenti i Finances</h3>
 			<h3>DHL International (Albania) SHPK</h3>
 		</div>
