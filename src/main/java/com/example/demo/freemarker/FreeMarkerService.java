@@ -27,7 +27,7 @@ public class FreeMarkerService {
 
 	private static final String ATTACHMENT_PATH = "";
 
-	private static final String PATH = "C:\\Users\\dbeqiraj\\git\\demo\\src\\main\\resources\\templates\\pdf";
+	private static final String PATH = "src\\main\\resources\\templates\\fthl";
 
 	@Autowired
 	private Configuration configuration;

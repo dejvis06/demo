@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.example.demo.freemarker.FreeMarkerService;
+import com.example.demo.freemarker.User;
 import com.example.demo.thymeleaf.ThymeleafService;
 
 @SpringBootTest
@@ -31,7 +32,8 @@ class DemoApplicationTests {
 	void getEmailContent() {
 		try {
 
-			freeMarkerService.sendEmail();
+			// System.err.println(freeMarkerService.getEmailContent(new User("dejvis",
+			// "dejvis06", "dbeqiraj@tetra.al")));
 
 		} catch (Exception e) {
 			e.printStackTrace();
