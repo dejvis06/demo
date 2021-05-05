@@ -1,15 +1,9 @@
 package com.example.demo.thymeleaf;
 
-import java.io.ByteArrayInputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
-import java.io.Writer;
 
 import org.springframework.stereotype.Service;
 import org.thymeleaf.TemplateEngine;
@@ -23,12 +17,14 @@ import com.lowagie.text.DocumentException;
 @Service
 public class ThymeleafService {
 
+	private static final String PREFIX = "templates" + File.separator + "pdf" + File.separator;
+
 	private String parseThymeleafTemplate() {
 
 		TemplateEngine templateEngine = new TemplateEngine();
 
 		ClassLoaderTemplateResolver templateResolver = new ClassLoaderTemplateResolver();
-		templateResolver.setPrefix("templates" + File.separator + "pdf" + File.separator);
+		templateResolver.setPrefix(PREFIX);
 		templateResolver.setSuffix(".html");
 		templateResolver.setTemplateMode(TemplateMode.HTML);
 
