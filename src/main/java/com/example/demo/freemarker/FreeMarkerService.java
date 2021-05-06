@@ -5,18 +5,18 @@ import java.io.IOException;
 import java.io.StringWriter;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
+
+import com.example.demo.freemarker.entity.CustomDuty;
+import com.example.demo.freemarker.entity.User;
 
 import freemarker.cache.FileTemplateLoader;
 import freemarker.template.Configuration;
@@ -27,7 +27,7 @@ public class FreeMarkerService {
 
 	private static final String ATTACHMENT_PATH = "";
 
-	private static final String PATH = "src\\main\\resources\\templates\\fthl";
+	private static final String PATH = "templates/fthl";
 
 	@Autowired
 	private Configuration configuration;
@@ -40,7 +40,7 @@ public class FreeMarkerService {
 		User user = new User("dejvis", "dejvis06", "dbeqiraj@tetra.al");
 
 		MimeMessage mimeMessage = javaMailSender.createMimeMessage();
-		MimeMessageHelper helper = new MimeMessageHelper(mimeMessage);
+		MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
 
 		helper.setSubject("Welcome To SpringHow.com");
 		helper.setFrom("_mainaccount@profisc.al");
@@ -58,7 +58,8 @@ public class FreeMarkerService {
 
 	private String getEmailContent(User user) throws IOException, TemplateException {
 
-		FileTemplateLoader templateLoader = new FileTemplateLoader(new File(PATH));
+		FileTemplateLoader templateLoader = new FileTemplateLoader(
+				new File(getClass().getClassLoader().getResource(PATH).getPath()));
 		configuration.setTemplateLoader(templateLoader);
 
 		StringWriter stringWriter = new StringWriter();
@@ -66,7 +67,26 @@ public class FreeMarkerService {
 
 		model.put("user", user);
 
-		configuration.getTemplate("email.ftlh").process(model, stringWriter);
+		configuration.getTemplate("email_user.ftl").process(model, stringWriter);
+		return stringWriter.getBuffer().toString();
+	}
+
+	public String getEmailContent(CustomDuty customDuty) throws IOException, TemplateException {
+
+		FileTemplateLoader templateLoader = new FileTemplateLoader(
+				new File(getClass().getClassLoader().getResource(PATH).getPath()));
+		configuration.setTemplateLoader(templateLoader);
+
+		StringWriter stringWriter = new StringWriter();
+		Map<String, Object> model = new HashMap<>();
+
+		model.put("awb_nr", customDuty.getAwbNo());
+		model.put("custom_duty_val", customDuty.getValue());
+		model.put("custom_duty_dhl_val", customDuty.getDhlValue());
+		model.put("custom_duty_curr", customDuty.getCurrency());
+		model.put("custom_duty_tot_val", customDuty.getTotalValue());
+
+		configuration.getTemplate("email_dhl.ftl").process(model, stringWriter);
 		return stringWriter.getBuffer().toString();
 	}
 }

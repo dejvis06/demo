@@ -6,7 +6,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.example.demo.dozer.DozerService;
 import com.example.demo.freemarker.FreeMarkerService;
-import com.example.demo.freemarker.User;
+import com.example.demo.freemarker.entity.CustomDuty;
+import com.example.demo.freemarker.entity.User;
 import com.example.demo.thymeleaf.ThymeleafService;
 
 @SpringBootTest
@@ -26,18 +27,19 @@ class DemoApplicationTests {
 		try {
 
 			thymeleafService.generatePdfFromHtml();
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	// @Test
+	@Test
 	void getEmailContent() {
 		try {
 
-			// System.err.println(freeMarkerService.getEmailContent(new User("dejvis",
-			// "dejvis06", "dbeqiraj@tetra.al")));
+			// freeMarkerService.sendEmail();
+
+			System.err.println(freeMarkerService.getEmailContent(
+					new CustomDuty("test awbNo", "test value", "test currency", "test dhlValue", "test total value")));
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -49,7 +51,6 @@ class DemoApplicationTests {
 		try {
 
 			dozerService.convertPersonneToPerson();
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -1,4 +1,4 @@
-package com.example.demo.freemarker;
+package com.example.demo.freemarker.entity;
 
 public class User {
 
