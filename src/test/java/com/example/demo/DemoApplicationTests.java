@@ -22,7 +22,7 @@ class DemoApplicationTests {
 	@Autowired
 	private DozerService dozerService;
 
-	// @Test
+	@Test
 	void generatePdfFromHtml() {
 		try {
 
@@ -32,7 +32,7 @@ class DemoApplicationTests {
 		}
 	}
 
-	@Test
+	// @Test
 	void getEmailContent() {
 		try {
 

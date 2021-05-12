@@ -105,6 +105,12 @@ table {
 			nga te gjitha bankat per kryerjen e cdo transaksioni bankar qe nga
 			data 01/02/2018.</p>
 		<table>
+			<tr data-th-each="person : ${persons}">
+				<td data-th-text="${person.name}">...</td>
+				<td data-th-text="${person.nickname}">...</td>
+			</tr>
+		</table>
+		<table>
 			<tbody>
 				<tr>
 					<td class="td">Banka</td>
